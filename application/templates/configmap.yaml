@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}
+data:
+  database.url: {{ .Values.database.url }}
+  database.user: {{ .Values.database.user }}
+  aws.region: {{ .Values.aws.region }}
+  aws.bucket: {{ .Values.aws.bucket }}

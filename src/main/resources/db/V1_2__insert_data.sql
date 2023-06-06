@@ -1,0 +1,1 @@
+INSERT INTO employee(id, job) VALUES ('f41692c6-e81c-4758-be6e-0d3fafa4e8b9', 'Developer');
