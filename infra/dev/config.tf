@@ -19,12 +19,11 @@ provider "helm" {
 }
 
 provider "aws" {
-  region  = var.aws_region
-  profile = "jworks-playground"
+  region = var.aws_region
 
   default_tags {
     tags = {
-      "app" = "nicholas_meyers_spiffe"
+      "app" = "demo_spiffe"
     }
   }
 }

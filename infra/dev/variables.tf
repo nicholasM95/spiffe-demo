@@ -30,11 +30,11 @@ variable "database_user" {
 variable "database_name" {
   description = "database name"
   type        = string
-  default     = "nicholasmeyersspiffe"
+  default     = "demospiffe"
 }
 
 variable "s3_bucket_name" {
   description = "s3 bucket name"
   type        = string
-  default     = "nicholasmeyersspiffe"
+  default     = "demospiffe"
 }
