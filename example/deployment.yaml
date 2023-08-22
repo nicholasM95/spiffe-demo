@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-spiffe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: demospiffe
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: demospiffe
+    spec:
+      serviceAccount: file-read-app
+      containers:
+        - name: demospiffe
+          image: nicholas95/spiffedemo:dev-1
+          imagePullPolicy: Always
+          env:
+            - name: AWS_REGION
+              value: eu-west-1
+            - name: AWS_BUCKET
+              value: demospiffe
+          volumeMounts:
+            - mountPath: /root/.aws
+              name: spiffe
+      volumes:
+        - csi:
+            driver: spiffe.csi.cert-manager.io
+            readOnly: true
+            volumeAttributes:
+              aws.spiffe.csi.cert-manager.io/enable: "true"
+              aws.spiffe.csi.cert-manager.io/role: arn:aws:iam::930970667460:role/nicholas_meyers_home_k8s_read
+              aws.spiffe.csi.cert-manager.io/trust-anchor: arn:aws:rolesanywhere:eu-west-1:930970667460:trust-anchor/1bf58d4e-35c6-465c-a05c-1bdcce05054b
+              aws.spiffe.csi.cert-manager.io/trust-profile: arn:aws:rolesanywhere:eu-west-1:930970667460:profile/fa6c37f9-f64a-4bdf-b0f6-c39ec5282aa4
+          name: spiffe

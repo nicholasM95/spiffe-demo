@@ -3,7 +3,7 @@ data "local_file" "ca_bundle" {
 }
 
 resource "aws_rolesanywhere_trust_anchor" "trust_anchor" {
-  name    = "nicholas_meyers_home_k8s"
+  name    = "trust_anchor_k8s"
   enabled = true
   source {
     source_data {

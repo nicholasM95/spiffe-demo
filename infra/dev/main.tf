@@ -18,7 +18,7 @@ module "application" {
   aws_role          = module.aws.role
   database_url      = module.aws.database_url
   database_user     = var.database_user
-  aws_region         = var.aws_region
-  aws_bucket         = var.s3_bucket_name
+  aws_region        = var.aws_region
+  aws_bucket        = var.s3_bucket_name
   tag               = "1.0.16"
 }
